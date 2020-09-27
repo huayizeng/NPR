@@ -1,0 +1,60 @@
+syntax = "proto2";
+
+message FeaturesDNNProto {
+   repeated FeatureDNNProto feature_dnn_protos = 1;
+}
+
+message FeatureDNNProto {
+   // required bytes normal_image_png = 1;
+   // required bytes depth_image_png = 2;
+   // required name?
+
+  required string name = 1;
+
+  // 2i, comp, i, pi, pureL, u could be better
+  enum HouseType {
+    kI            = 3;
+    kII           = 1;
+    kIII          = 4;
+    kL            = 5;
+    kU            = 6;
+    kComp         = 2;
+  }
+
+  required HouseType housetype = 2;
+
+  required double azimuth = 3;
+
+  repeated double footprint_x = 4;
+
+  repeated double footprint_y = 5;
+
+  repeated double flat_i_x = 10;
+  repeated double flat_i_y = 11;   
+
+  repeated double flat_l_x = 12;
+  repeated double flat_l_y = 13;   
+
+
+
+  enum RoofType {
+    kGable            = 1;
+    kHip              = 2;
+    kFlat             = 3;
+  }
+
+  repeated RoofType rooftype = 6;
+
+  repeated double dormer_x = 7;
+  repeated double dormer_y = 8;
+  repeated int32 dormer_index = 9;
+
+  repeated double chimney_x = 14;
+  repeated double chimney_y = 15;
+  repeated int32 chimney_index = 16;
+
+/*
+  repeated double flat_x = 9;
+  repeated double flat_y = 10;   
+*/
+}
